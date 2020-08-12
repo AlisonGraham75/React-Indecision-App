@@ -2,13 +2,10 @@
 
 console.log('App.js is running');
 
-//create app object title/subtitle
-//use title/subtitle in the template
-//render template
-
 var app = {
     title: 'Indecision App',
-    subtitle: 'This is some info'
+    subtitle: 'This is some info',
+    options: ['One', 'Two']
 
     //JSX - JavaScript XML 
 };var template = React.createElement(
@@ -19,10 +16,16 @@ var app = {
         null,
         app.title
     ),
-    React.createElement(
+    app.subtitle && React.createElement(
         'p',
         null,
         app.subtitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options' : 'No options',
+        '  '
     ),
     React.createElement(
         'ol',
@@ -44,29 +47,36 @@ var app = {
 var user = {
     name: 'Andrew',
     age: 26,
-    location: 'Philadelphia'
+    location: 'New York'
 };
 
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location
+        );
+    }
+}
+
+//Rendering dynamic content using ternary operators and logical AND operator
 var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        user.name
+        user.name ? user.name : 'Anonymous'
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         'p',
         null,
         'Age: ',
         user.age
     ),
-    React.createElement(
-        'p',
-        null,
-        'Location: ',
-        user.location
-    )
+    getLocation(user.location)
 );
 
 var appRoot = document.getElementById('app');
