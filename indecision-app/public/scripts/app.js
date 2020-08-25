@@ -50,11 +50,6 @@ var renderOptionsApp = function renderOptionsApp() {
             '  '
         ),
         React.createElement(
-            'p',
-            null,
-            app.options.length
-        ),
-        React.createElement(
             'button',
             { onClick: wipeArray },
             'Remove All'
@@ -62,16 +57,13 @@ var renderOptionsApp = function renderOptionsApp() {
         React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'Item one'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'Item two'
-            )
+            app.options.map(function (option) {
+                return React.createElement(
+                    'li',
+                    { key: option },
+                    option
+                );
+            })
         ),
         React.createElement(
             'form',
