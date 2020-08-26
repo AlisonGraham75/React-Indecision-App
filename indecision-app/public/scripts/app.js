@@ -26,6 +26,12 @@ var wipeArray = function wipeArray(e) {
     renderOptionsApp();
 };
 
+var onMakeDecision = function onMakeDecision() {
+    var randomNum = Math.floor(Math.random() * app.options.length);
+    var option = app.options[randomNum];
+    alert(option);
+};
+
 var appRoot = document.getElementById('app');
 
 //JSX - JavaScript XML 
@@ -48,6 +54,11 @@ var renderOptionsApp = function renderOptionsApp() {
             null,
             app.options.length > 0 ? 'Here are your options' : 'No options',
             '  '
+        ),
+        React.createElement(
+            'button',
+            { disabled: app.options.length === 0, onClick: onMakeDecision },
+            'What should I do?'
         ),
         React.createElement(
             'button',
