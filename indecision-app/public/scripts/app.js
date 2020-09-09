@@ -23,12 +23,15 @@ var IndecisionApp = function (_React$Component) {
     _createClass(IndecisionApp, [{
         key: 'render',
         value: function render() {
+            var title = 'Indecision';
+            var subTitle = 'Put your life in the hands of a computer';
+            var options = ['Thing one', 'Thing two', 'Thing four'];
             return React.createElement(
                 'div',
                 null,
-                React.createElement(Header, null),
+                React.createElement(Header, { title: title, subTitle: subTitle }),
                 React.createElement(Action, null),
-                React.createElement(Options, null),
+                React.createElement(Options, { options: options }),
                 React.createElement(AddOptions, null)
             );
         }
@@ -51,6 +54,7 @@ var Header = function (_React$Component2) {
 
         //Required react method
         value: function render() {
+
             //returns JSX
             return React.createElement(
                 'div',
@@ -58,12 +62,12 @@ var Header = function (_React$Component2) {
                 React.createElement(
                     'h1',
                     null,
-                    'Indecision'
+                    this.props.title
                 ),
                 React.createElement(
                     'h2',
                     null,
-                    'Put your life in the hands of a computer'
+                    this.props.subTitle
                 )
             );
         }
@@ -114,7 +118,9 @@ var Options = function (_React$Component4) {
             return React.createElement(
                 'div',
                 null,
-                'Options component here',
+                this.props.options.map(function (option) {
+                    return React.createElement(Option, { key: option, optionText: option });
+                }),
                 React.createElement(Option, null)
             );
         }
@@ -138,7 +144,7 @@ var Option = function (_React$Component5) {
             return React.createElement(
                 'div',
                 null,
-                'Option Component here'
+                this.props.optionText
             );
         }
     }]);
