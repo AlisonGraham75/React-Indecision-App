@@ -45,8 +45,13 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+    constructor(props) {
+        //Get access to this.props, correct the context
+        super(props);
+        this.handlePick = this.handlePick.bind(this);
+    }
     handlePick()  {
-        alert('removeAllClicked');
+        console.log(this.props.options);
     }
     render() {
         return (
